@@ -1,38 +1,25 @@
 ﻿using irshad.clone.business.Abstract;
-using irshad.clone.core.Utilities.Results.Abstract;
 using irshad.clone.entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace homme.clone.webAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CommentsController : ControllerBase
+    public class MaterialsController : ControllerBase
     {
-        private ICommentService _commentService;
+        private IMaterialService _materialService;
 
-        public CommentsController(ICommentService commentService)
+        public MaterialsController(IMaterialService materialService)
         {
-            _commentService = commentService;
+            _materialService=materialService;
         }
 
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _commentService.GetAll();
-            if(result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result.Message);
-        }
-
-        [HttpGet("byProductId")]
-        public IActionResult ByProductId(int id)
-        {
-            var result = _commentService.GetCommentByProductId(id);
+            var result = _materialService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
@@ -40,10 +27,11 @@ namespace homme.clone.webAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpPost("post")]
-        public IActionResult Post(Comment comment)
+        [Route("byId/{id:int}")]
+        [HttpGet]
+        public IActionResult ById(int id)
         {
-            var result = _commentService.Add(comment);
+            var result = _materialService.Get(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -51,10 +39,21 @@ namespace homme.clone.webAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpPut("activate")]
-        public IActionResult Activate(Comment comment)
+        [HttpPost("add")]
+        public IActionResult Add(Material material)
         {
-            var result = _commentService.Activate(comment);
+            var result = _materialService.Add(material);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpPut("update")]
+        public IActionResult Update(Material material)
+        {
+            var result = _materialService.Update(material);
             if (result.Success)
             {
                 return Ok(result);
@@ -64,8 +63,9 @@ namespace homme.clone.webAPI.Controllers
 
         [Route("delete/{id:int}")]
         [HttpDelete]
-        public IActionResult Delete(int id) { 
-            var result = _commentService.Remove(id);
+        public IActionResult Delete(int id)
+        {
+            var result = _materialService.Remove(id);
             if (result.Success)
             {
                 return Ok(result);

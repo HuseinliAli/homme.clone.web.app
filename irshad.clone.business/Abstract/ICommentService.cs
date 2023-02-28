@@ -7,7 +7,7 @@ namespace irshad.clone.business.Abstract
     public interface ICommentService
     {
         IResult Add(Comment comment);
-        IResult Remove(Comment comment);
+        IResult Remove(int id);
         IResult Activate(Comment comment);
         IDataResult<List<Comment>> GetAll();
         IDataResult<List<Comment>> GetCommentByProductId(int id);

@@ -45,9 +45,10 @@ namespace irshad.clone.business.Concrete
                 _commentDal.GetAll(c=>c.ProductId == id).ToList(), CommentSuccess.Listed);
         }
 
-        public IResult Remove(Comment comment)
+        public IResult Remove(int id)
         {
-            _commentDal.Delete(comment);
+            var delete = _commentDal.Get(c=>c.CommentId==id);
+            _commentDal.Delete(delete);
             return new SuccessResult(CommentSuccess.Removed);
         }
     }
