@@ -9,8 +9,4 @@
     <ProjectReference Include="..\irshad.clone.business\irshad.clone.business.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Constants\" />
-  </ItemGroup>
-
 </Project>

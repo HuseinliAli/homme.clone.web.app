@@ -15,7 +15,7 @@ namespace irshad.clone.business.Concrete
 {
     public class ProductManager : IProductService
     {
-        IProductDal _productDal;
+        private IProductDal _productDal;
 
         public ProductManager(IProductDal productDal)
         {
@@ -25,25 +25,18 @@ namespace irshad.clone.business.Concrete
         public IResult Add(Product product)
         {
             _productDal.Add(product);
-            return new SuccessResult(ProductSuccess.Added);
+            return new SuccessResult();
         }
 
         public IDataResult<List<ProductDetailDto>> GetAll()
         {
-            return new SuccessDataResult<List<ProductDetailDto>>(
-                _productDal.GetProductDetails(), ProductSuccess.Listed);
+            return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductsDetails());
         }
 
         public IDataResult<List<ProductDetailDto>> GetByCatalogId(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductsDetails().Where(p=>p.CatalogId == id).ToList());
         }
-
-        //public IDataResult<List<ProductDetailDto>> GetByCatalogId(int id)
-        //{
-        //    return new SuccessDataResult<List<ProductDetailDto>>(
-        //       _productDal.GetAll(), ProductSuccess.Listed);
-        //}
 
         public IDataResult<List<ProductDetailDto>> GetByCategoryId(int id)
         {
@@ -57,7 +50,7 @@ namespace irshad.clone.business.Concrete
 
         public IDataResult<ProductDetailDto> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<ProductDetailDto>(_productDal.GetProductsDetails().FirstOrDefault(p => p.ProductId==id));
         }
 
         public IDataResult<List<ProductDetailDto>> GetByMaterialId(int id)
@@ -71,11 +64,6 @@ namespace irshad.clone.business.Concrete
         }
 
         public IDataResult<List<ProductDetailDto>> GetByUnitPrice(decimal min, decimal max)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDataResult<List<ProductDetailDto>> GetProductDetails()
         {
             throw new NotImplementedException();
         }

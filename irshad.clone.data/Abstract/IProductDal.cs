@@ -9,7 +9,6 @@ namespace irshad.clone.data.Abstract
 {
     public interface IProductDal : IEntityRepository<Product>
     {
-        List<ProductDetailDto> GetProductDetails();
-        List<ProductDetailDto> GetByCatalogId(int id);
+        List<ProductDetailDto> GetProductsDetails();
     }
 }

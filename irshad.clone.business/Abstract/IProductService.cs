@@ -20,6 +20,5 @@ namespace irshad.clone.business.Abstract
         IDataResult<List<ProductDetailDto>> GetByColorId(int id);
         IDataResult<List<ProductDetailDto>> GetByUnitPrice(decimal min, decimal max);
         IDataResult<ProductDetailDto> GetById(int id);
-        IDataResult<List<ProductDetailDto>> GetProductDetails();
     }
 }

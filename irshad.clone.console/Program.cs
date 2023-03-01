@@ -10,9 +10,9 @@ namespace irshad.clone.console
         {
             var pm = new ProductManager(new EfProductDal());
 
-            //foreach (var item in pm.GetProductDetails())
+            //foreach(var item in pm.GetProductsDetails().Data)
             //{
-            //    Console.WriteLine(item.ProductName + " "+ item.CatalogName);
+            //    Console.WriteLine(item.ProductId+" "+item.ProductName + " ");
             //}
         }
     }
