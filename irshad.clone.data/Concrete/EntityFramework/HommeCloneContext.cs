@@ -24,3 +24,4 @@ namespace irshad.clone.data.Concrete.EntityFramework
     }
 }
 //(localdb)\MSSQLLocalDB
+//DESKTOP-CN1EGDU

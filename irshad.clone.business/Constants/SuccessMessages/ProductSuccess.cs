@@ -8,5 +8,7 @@ namespace irshad.clone.business.Constants.SuccessMessages
     {
         public static string Added = "Mehsul ugurlu sekilde elave olundu";
         internal static string Listed;
+        internal static string Removed;
+        internal static string Updated;
     }
 }

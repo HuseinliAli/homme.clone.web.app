@@ -1,7 +1,10 @@
 ﻿using irshad.clone.business.Abstract;
+using irshad.clone.core.Utilities.Results.Abstract;
 using irshad.clone.entities.Concrete;
+using irshad.clone.entities.Dtos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace irshad.clone.webAPI.Controllers
 {
@@ -27,7 +30,7 @@ namespace irshad.clone.webAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpGet("etAllWithoutImages")]
+        [HttpGet("getAllWithoutImages")]
         public IActionResult GetAllWithoutImages()
         {
             var result = _productService.GetAll();
@@ -72,5 +75,90 @@ namespace irshad.clone.webAPI.Controllers
             }
             return BadRequest(result.Message);
         }
+
+        [HttpPut("update")]
+        public IActionResult Update(Product product)
+        {
+            var result = _productService.Update(product);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [Route("delete/{id:int}")]
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            var result = _productService.Remove(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+
+        [Route("byCategoryId/{id:int}")]
+        [HttpGet]
+        public IActionResult ByCategoryId(int id)
+        {
+            var result = _productService.GetByCategoryId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+
+        [Route("bySubCategoryId/{id:int}")]
+        [HttpGet]
+        public IActionResult BySubCategoryId(int id)
+        {
+            var result = _productService.GetBySubCategoryId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+        [Route("byMaterialId/{id:int}")]
+        [HttpGet]
+        public IActionResult ByMaterialId(int id)
+        {
+            var result = _productService.GetByMaterialId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [Route("byColorId/{id:int}")]
+        [HttpGet]
+        public IActionResult ByColorId(int id)
+        {
+            var result = _productService.GetByColorId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [Route("byUnitPrice/{min:decimal,max:decimal}")]
+        [HttpGet]
+        public IActionResult ByUnitPrice(decimal min, decimal max)
+        {
+            var result = _productService.GetByUnitPrice(min, max);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
     }
 }
+

@@ -10,7 +10,7 @@ namespace irshad.clone.business.Abstract
     public interface IProductService
     {
         IResult Add(Product product);
-        IResult Remove(Product product);
+        IResult Remove(int id);
         IResult Update(Product product);
         IDataResult<List<Product>> GetAll();
         IDataResult<List<ProductDetailDto>> GetAllWithImages();

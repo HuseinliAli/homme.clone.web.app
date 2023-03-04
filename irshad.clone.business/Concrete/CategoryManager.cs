@@ -39,7 +39,7 @@ namespace irshad.clone.business.Concrete
 
         public IDataResult<List<Category>> GetByCatalogId(int id)
         {
-           return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(c=>c.CatalogId ==id).ToList(), CategorySuccess.GotByCatalogId)
+            return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(c => c.CatalogId ==id).ToList(), CategorySuccess.GotByCatalogId);
         }
 
         public IResult Remove(int id)

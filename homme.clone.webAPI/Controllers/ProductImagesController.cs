@@ -14,7 +14,7 @@ namespace homme.clone.webAPI.Controllers
     {
         private IProductImageService _productImageService;
 
-        public ProductImagesController(IProductImageService productImageService )
+        public ProductImagesController(IProductImageService productImageService)
         {
             _productImageService=productImageService;
         }
@@ -61,5 +61,6 @@ namespace homme.clone.webAPI.Controllers
             }
             return BadRequest(result.Message);
         }
+
     }
 }
