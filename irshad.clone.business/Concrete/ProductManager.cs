@@ -25,10 +25,15 @@ namespace irshad.clone.business.Concrete
         public IResult Add(Product product)
         {
             _productDal.Add(product);
-            return new SuccessResult();
+            return new SuccessResult(ProductSuccess.Added);
         }
 
-        public IDataResult<List<ProductDetailDto>> GetAll()
+        public IDataResult<List<Product>> GetAll()
+        {
+            return new SuccessDataResult<List<Product>> (_productDal.GetAll());
+        }
+
+        public IDataResult<List<ProductDetailDto>> GetAllWithImages()
         {
             return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductsDetails());
         }
@@ -40,12 +45,12 @@ namespace irshad.clone.business.Concrete
 
         public IDataResult<List<ProductDetailDto>> GetByCategoryId(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductsDetails().Where(p => p.CategoryId == id).ToList());
         }
 
         public IDataResult<List<ProductDetailDto>> GetByColorId(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductsDetails().Where(p => p.ColorId == id).ToList());
         }
 
         public IDataResult<ProductDetailDto> GetById(int id)
@@ -54,28 +59,30 @@ namespace irshad.clone.business.Concrete
         }
 
         public IDataResult<List<ProductDetailDto>> GetByMaterialId(int id)
-        {
-            throw new NotImplementedException();
+        { 
+            return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductsDetails().Where(p=>p.MaterialId == id).ToList());
         }
 
         public IDataResult<List<ProductDetailDto>> GetBySubCategoryId(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductsDetails().Where(p => p.SubCategoryId == id).ToList());
         }
 
         public IDataResult<List<ProductDetailDto>> GetByUnitPrice(decimal min, decimal max)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductsDetails().Where(p=>p.Price >=min && p.Price<=max).ToList());
         }
 
         public IResult Remove(Product product)
         {
-            throw new NotImplementedException();
+            _productDal.Delete(product);
+            return new SuccessResult();
         }
 
         public IResult Update(Product product)
         {
-            throw new NotImplementedException();
+            _productDal.Update(product);
+            return new SuccessResult();
         }
     }
 }

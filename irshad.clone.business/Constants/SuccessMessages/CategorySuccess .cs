@@ -13,5 +13,6 @@ namespace irshad.clone.business.Constants.SuccessMessages
         public static string Listed = "Kateqoriyalar uğurlu şəkildə siyahılandırıldı";
         public static string Removed = "Kateqoriya sistemdən silindi";
         public static string Updated = "Kateqoriya sistemdə uğurlu şəkildə dəyişdirildi";
+        public static string GotByCatalogId = "Kateqoriyalar kataloqlara görə uğurlu şəkildə siyahılandırıldı";
     }
 }

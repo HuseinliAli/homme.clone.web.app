@@ -11,6 +11,7 @@ namespace irshad.clone.entities.Concrete
         public Product()
         {
             Favorite = false;
+            DateAdded = DateTime.Now;
         }
         public int ProductId { get; set; }
         public int CatalogId { get; set; }
@@ -25,7 +26,7 @@ namespace irshad.clone.entities.Concrete
         public int UnistInStock { get; set; }
         public string Description { get; set; }
         public bool Favorite { get; set; }
-
+        public DateTime DateAdded { get; set; }
         public List<ProductImage> ProductImages { get; set; }
     }
 }

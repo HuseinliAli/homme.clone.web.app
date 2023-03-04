@@ -25,6 +25,7 @@ namespace irshad.clone.entities.Dtos
         public string Size { get; set; }
         public string Description { get; set; }
         public bool Favorite { get; set; }
+        public DateTime DateAdded { get; set; }
         public List<ProductImage> ImagesPath { get; set; }
     }
 }

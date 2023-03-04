@@ -12,5 +12,7 @@ namespace irshad.clone.business.Constants.SuccessMessages
         public static string Listed = "Alt Kateqoriyalar uğurlu şəkildə siyahılandırıldı";
         public static string Removed = "Alt Kateqoriya sistemdən silindi";
         public static string Updated = "Alt Kateqoriya sistemdə uğurlu şəkildə dəyişdirildi";
+
+        public static string GotByCategoryId = "SubKateqoriyalar Kateqoriyalara görə uğurlu şəkildə siyahılandırıldı";
     }
 }

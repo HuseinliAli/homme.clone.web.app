@@ -19,7 +19,7 @@ namespace irshad.clone.webAPI.Controllers
         [HttpGet("getAll")]
         public IActionResult GetAll()
         {
-            var result = _productService.GetAll();
+            var result = _productService.GetAllWithImages();
             if (result.Success)
             {
                 return Ok(result);
@@ -27,6 +27,16 @@ namespace irshad.clone.webAPI.Controllers
             return BadRequest(result.Message);
         }
 
+        [HttpGet("etAllWithoutImages")]
+        public IActionResult GetAllWithoutImages()
+        {
+            var result = _productService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Message);
+        }
 
         [Route("byId/{id:int}")]
         [HttpGet]

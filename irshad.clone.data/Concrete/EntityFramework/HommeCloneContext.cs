@@ -10,7 +10,7 @@ namespace irshad.clone.data.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;Database=Homme;Trusted_Connection=true;");
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-CN1EGDU;Database=Homme;Trusted_Connection=true;");
         }
 
         public DbSet<Product> Products { get; set; }
@@ -23,3 +23,4 @@ namespace irshad.clone.data.Concrete.EntityFramework
         public DbSet<Comment> Comments { get; set; }
     }
 }
+//(localdb)\MSSQLLocalDB

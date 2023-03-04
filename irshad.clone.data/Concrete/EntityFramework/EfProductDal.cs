@@ -45,7 +45,8 @@ namespace irshad.clone.data.Concrete.EntityFramework
                                  CategoryName =cat.CategoryName,
                                  MaterialId=m.MaterialId,
                                  SubCategoryId = sc.SubCategoryId,
-                                 SubCategoryName = sc.SubCategoryName
+                                 SubCategoryName = sc.SubCategoryName,
+                                 DateAdded = p.DateAdded
                              };
                 var list = result.ToList();
                 var distinct = list.GroupBy(id => id.ProductId).Select(p => p.FirstOrDefault()).ToList();

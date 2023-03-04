@@ -58,6 +58,18 @@ namespace homme.clone.webAPI
             //Add Transit cart kimi seylerde olur
 
             services.AddSingleton<IFileHelper, FileHelper>();
+
+
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+                builder =>
+                {
+                    builder
+                    .WithOrigins("http://localhost:3000")
+                    .WithOrigins("http://localhost:3001")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials();
+                }));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -74,6 +86,7 @@ namespace homme.clone.webAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "homme.clone.webAPI v1"));
             }
+            app.UseCors("CorsPolicy");
 
             app.UseStaticFiles();
 

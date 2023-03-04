@@ -13,5 +13,6 @@ namespace irshad.clone.business.Abstract
         IResult Update(Category category);
         IDataResult<List<Category>> GetAll();
         IDataResult<Category> Get(int id);
+        IDataResult<List<Category>> GetByCatalogId(int id);
     }
 }

@@ -12,7 +12,8 @@ namespace irshad.clone.business.Abstract
         IResult Add(Product product);
         IResult Remove(Product product);
         IResult Update(Product product);
-        IDataResult<List<ProductDetailDto>> GetAll();
+        IDataResult<List<Product>> GetAll();
+        IDataResult<List<ProductDetailDto>> GetAllWithImages();
         IDataResult<List<ProductDetailDto>> GetByCatalogId(int id);
         IDataResult<List<ProductDetailDto>> GetByCategoryId(int id);
         IDataResult<List<ProductDetailDto>> GetBySubCategoryId(int id);

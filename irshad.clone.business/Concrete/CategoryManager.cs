@@ -7,6 +7,7 @@ using irshad.clone.data.Concrete.EntityFramework;
 using irshad.clone.entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace irshad.clone.business.Concrete
@@ -34,6 +35,11 @@ namespace irshad.clone.business.Concrete
         public IDataResult<List<Category>> GetAll()
         {
             return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(), CategorySuccess.Listed);
+        }
+
+        public IDataResult<List<Category>> GetByCatalogId(int id)
+        {
+           return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(c=>c.CatalogId ==id).ToList(), CategorySuccess.GotByCatalogId)
         }
 
         public IResult Remove(int id)
